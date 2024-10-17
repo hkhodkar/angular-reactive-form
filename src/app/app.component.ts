@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { isPasswordMatch } from '../share/validators/is-password-match.validator';
 import { passwordPattern } from '../share/validators/password-pattern.validator';
+import { bannedWords } from '../share/validators/ban-words';
 
 
 export interface IForm {
@@ -25,8 +26,11 @@ export class AppComponent implements OnInit {
   title = 'form';
 
   form: FormGroup<IForm> = new FormGroup({
-    name: new FormControl<string>('', Validators
-      .compose([Validators.required, Validators.minLength(4), Validators.maxLength(20)])),
+    name: new FormControl<string>('', {
+      validators: Validators
+        .compose([Validators.required, Validators.minLength(4), Validators.maxLength(20), bannedWords(["test", "dummy"])]),
+      updateOn: "blur"
+    }),
     password: new FormControl<string>('', Validators.compose([Validators.required, passwordPattern()])),
     confirmPassword: new FormControl<string>('', Validators.required)
   }, isPasswordMatch);

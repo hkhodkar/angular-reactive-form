@@ -10,6 +10,9 @@
       <div class="error" *ngIf="(name.dirty || name.touched) && name.hasError('maxlength')">
         the input should not be more than <strong>{{name.getError('maxlength').requiredLength}}</strong> character
       </div>
+      <div class="error" *ngIf="(name.dirty || name.touched) && name.hasError('bannedWords')">
+        the <strong>{{name.getError('bannedWords').bannedWord}}</strong> is banned, please use other name.
+      </div>
     </ng-container>
   </div>
 
