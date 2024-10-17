@@ -1,10 +1,13 @@
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { isPasswordMatch } from '../share/validators/is-password-match.validator';
+import { passwordPattern } from '../share/validators/password-pattern.validator';
 
 
 export interface IForm {
+  name: FormControl<string | null>
   password: FormControl<string | null>;
   confirmPassword: FormControl<string | null>;
 }
@@ -22,9 +25,11 @@ export class AppComponent implements OnInit {
   title = 'form';
 
   form: FormGroup<IForm> = new FormGroup({
-    password: new FormControl<string>('', Validators.compose([Validators.required])),
+    name: new FormControl<string>('', Validators
+      .compose([Validators.required, Validators.minLength(4), Validators.maxLength(20)])),
+    password: new FormControl<string>('', Validators.compose([Validators.required, passwordPattern()])),
     confirmPassword: new FormControl<string>('', Validators.required)
-  },);
+  }, isPasswordMatch);
 
   get passwordControl(): FormControl {
     return this.form.controls.password;

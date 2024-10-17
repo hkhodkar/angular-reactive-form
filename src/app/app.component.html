@@ -1,18 +1,32 @@
 <form [formGroup]="form" class="container">
   <div class="form-control">
-    <label>password:</label>
+    <label>Name:</label>
+    <input formControlName="name">
+    <ng-container *ngIf="form.controls.name as name">
+      <div class="error" *ngIf="(name.dirty || name.touched) && name.hasError('required')">This field is required</div>
+      <div class="error" *ngIf="(name.touched || name.dirty) && name.hasError('minlength')">
+        the input should be at least <strong>{{name.getError('minlength').requiredLength}}</strong> character
+      </div>
+      <div class="error" *ngIf="(name.dirty || name.touched) && name.hasError('maxlength')">
+        the input should not be more than <strong>{{name.getError('maxlength').requiredLength}}</strong> character
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="form-control">
+    <label>Password:</label>
     <input formControlName="password" type="password">
     <div class="error"
-      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('upperCaseError')">
-      input should have at least one uppercase character
+      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('upperCasePatternError')">
+      please insert at least one uppercase character
     </div>
     <div class="error"
-      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('loweCaseError')">
-      input should have atLeast one lowercase letter
+      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('lowerCasePatternError')">
+      please insert at least one lowercase letter
     </div>
     <div class="error"
-      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('symbolError')">
-      input should have atLeast one symbol like: !#$%^&*()&#64;
+      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('symbolPatternError')">
+      please insert at least one symbol like: !#$%^&*()&#64;
     </div>
   </div>
 

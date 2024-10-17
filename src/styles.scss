@@ -2,6 +2,7 @@
     --info: oklch(51.01% 0.274 263.83);
     --green: green;
     --error: #fe8080;
+    --white: #FFF;
 
     --gray-900: oklch(19.37% 0.006 300.98);
     --gray-700: oklch(36.98% 0.014 302.71);
@@ -12,7 +13,7 @@
   html {
     width: 100vw;
     height: 100vh;
-    background: var(--gray-400);
+    background: var(--white);
   }
 
   label {
@@ -25,18 +26,41 @@
     padding: .5rem;
     border: solid 1px var(--gray-100);
     border-radius: 4px;
+    width: 100%;
+  }
+
+  @keyframes input-error-animation {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @mixin input-text {
+    font-size: 12px;
+    box-sizing: border-box;
+    animation-name: input-message-animation;
+    animation-duration: 300ms;
   }
 
   input.ng-invalid.ng-touched {
+    @include input-text();
     border: 1px solid var(--error);
   }
 
   input.ng-valid.ng-touched {
+    @include input-text();
     border: 1px solid var(--green);
   }
 
   .error {
     padding: .325rem;
-    font-size: 14px;
+    font-size: 11px;
     color: var(--error);
+    animation: input-error-animation 300ms ease-in;
   }
