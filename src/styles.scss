@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+  :root {
+    --info: oklch(51.01% 0.274 263.83);
+    --green: green;
+    --error: #fe8080;
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+    --gray-100: #eee;
+  }
+
+  html {
+    width: 100vw;
+    height: 100vh;
+    background: var(--gray-400);
+  }
+
+  label {
+    padding: .5rem;
+    color: var(--gray-700);
+    display: block;
+  }
+
+  input {
+    padding: .5rem;
+    border: solid 1px var(--gray-100);
+    border-radius: 4px;
+  }
+
+  input.ng-invalid.ng-touched {
+    border: 1px solid var(--error);
+  }
+
+  input.ng-valid.ng-touched {
+    border: 1px solid var(--green);
+  }
+
+  .error {
+    padding: .325rem;
+    font-size: 14px;
+    color: var(--error);
+  }
