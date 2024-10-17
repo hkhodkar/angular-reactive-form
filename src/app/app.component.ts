@@ -1,46 +1,18 @@
 import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { isPasswordMatch } from '../share/validators/is-password-match.validator';
-import { passwordPattern } from '../share/validators/password-pattern.validator';
-import { bannedWords } from '../share/validators/ban-words';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ReactiveFormComponent } from '../features/reactive-form/reactive-form.component';
 
 
-export interface IForm {
-  name: FormControl<string | null>
-  password: FormControl<string | null>;
-  confirmPassword: FormControl<string | null>;
-}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule, CommonModule],
+  imports: [RouterOutlet, ReactiveFormComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-  ngOnInit(): void {
-  }
-  title = 'form';
+export class AppComponent {
 
-  form: FormGroup<IForm> = new FormGroup({
-    name: new FormControl<string>('', {
-      validators: Validators
-        .compose([Validators.required, Validators.minLength(4), Validators.maxLength(20), bannedWords(["test", "dummy"])]),
-      updateOn: "blur"
-    }),
-    password: new FormControl<string>('', Validators.compose([Validators.required, passwordPattern()])),
-    confirmPassword: new FormControl<string>('', Validators.required)
-  }, isPasswordMatch);
-
-  get passwordControl(): FormControl {
-    return this.form.controls.password;
-  }
-
-  get confirmPasswordControl(): FormControl {
-    return this.form.controls.confirmPassword;
-  }
 
 }

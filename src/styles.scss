@@ -26,7 +26,11 @@
     padding: .5rem;
     border: solid 1px var(--gray-100);
     border-radius: 4px;
-    width: 100%;
+    width: 280px;
+
+    &:focus-visible {
+      border: 1px solid var(--info);
+    }
   }
 
   @keyframes input-error-animation {
@@ -58,9 +62,31 @@
     border: 1px solid var(--green);
   }
 
+  .info {
+    padding: .325rem;
+    font-size: 11px;
+    color: var(--info);
+    animation: input-error-animation 300ms ease-in;
+
+  }
+
   .error {
     padding: .325rem;
     font-size: 11px;
     color: var(--error);
     animation: input-error-animation 300ms ease-in;
+  }
+
+  button {
+    background-color: var(--green);
+    padding: .75rem;
+    border: none;
+    width: 100%;
+    border-radius: 4px;
+    color: white;
+
+    &:disabled {
+      background-color: var(--gray-400);
+      cursor: not-allowed;
+    }
   }

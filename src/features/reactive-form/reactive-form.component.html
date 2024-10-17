@@ -1,0 +1,52 @@
+<form [formGroup]="form" class="container">
+  <div class="form-control">
+    <label>Name:</label>
+    <input formControlName="name">
+    <ng-container *ngIf="form.controls.name as name">
+      <span class="error" *ngIf="(name.dirty || name.touched) && name.hasError('required')">This field is
+        required.</span>
+      <div class="error" *ngIf="(name.touched || name.dirty) && name.hasError('minlength')">
+        the input should be at least <strong>{{name.getError('minlength').requiredLength}}</strong> character.
+      </div>
+      <div class="error" *ngIf="(name.dirty || name.touched) && name.hasError('maxlength')">
+        the input should not be more than <strong>{{name.getError('maxlength').requiredLength}}</strong> character.
+      </div>
+      <div class="error" *ngIf="(name.dirty || name.touched) && name.hasError('bannedWords')">
+        the <strong>{{name.getError('bannedWords').bannedWord}}</strong> is banned, please use other name.
+      </div>
+      <div class="error" *ngIf="(name.dirty || name.touched) && name.hasError('uniqueName')">
+        this username is already taken.
+      </div>
+      <div class="info" *ngIf="name.pending">
+        checking username ....
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="form-control">
+    <label>Password:</label>
+    <input formControlName="password" type="password">
+    <div class="error"
+      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('upperCasePatternError')">
+      please insert at least one uppercase character.
+    </div>
+    <div class="error"
+      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('lowerCasePatternError')">
+      please insert at least one lowercase letter.
+    </div>
+    <div class="error"
+      *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('symbolPatternError')">
+      please insert at least one symbol like: !#$%^&*()&#64;.
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Confirm password:</label>
+    <input formControlName="confirmPassword" type="password">
+    <div *ngIf="(confirmPasswordControl.touched || confirmPasswordControl.dirty)
+       && confirmPasswordControl.hasError('passwordIsNotMatch')" class="error">
+      password and confirm password is not matched!
+    </div>
+  </div>
+  <button [disabled]="form.invalid" type="submit">Save</button>
+</form>
