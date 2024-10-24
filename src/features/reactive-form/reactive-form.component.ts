@@ -17,6 +17,7 @@ import { UniqueNameValidation } from '../../share/services/unique-name-validator
 
 })
 export class ReactiveFormComponent {
+
   uniqueNameValidator = inject(UniqueNameValidation);
 
   form: FormGroup<FormType> = new FormGroup({
@@ -36,6 +37,10 @@ export class ReactiveFormComponent {
 
   get confirmPasswordControl(): FormControl {
     return this.form.controls.confirmPassword;
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
   }
 
 }

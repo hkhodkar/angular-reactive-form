@@ -1,10 +1,7 @@
+@import '../../mixin.scss';
+
 .container {
-  max-width: 300px;
-  background: var(--gray-100);
-  padding: 2rem;
-  border-radius: 8px;
-  margin-top: 2rem;
-  margin: 2rem auto;
+  @include container();
 }
 
 .form-control {
