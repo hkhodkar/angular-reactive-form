@@ -1,0 +1,17 @@
+.header {
+  height: 72px;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+
+  &>ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    cursor: pointer;
+  }
+
+  .router-link-active {
+    color: var(--secondary);
+  }
+}
