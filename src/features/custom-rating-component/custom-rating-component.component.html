@@ -1,0 +1,8 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container">
+  <paper-textarea ngDefaultControl formControlName="review" placeholder="Review text"
+    label="Web Component With ng-default-control" rows="2" class="review-text"></paper-textarea>
+  <div
+    *ngIf="(form.controls['review'].touched || form.controls['review'].dirty) && form.controls['review'].hasError('required')"
+    class="error">this field is required</div>
+  <button [disabled]="form.invalid" class="btn-success">Save</button>
+</form>
