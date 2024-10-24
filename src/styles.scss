@@ -118,3 +118,38 @@
   ul {
     list-style: none;
   }
+
+  .review-textarea {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: white;
+    min-height: 74px;
+    box-sizing: border-box;
+    color: var(--gray-400);
+    background-color: var(--gray-100);
+
+
+    h3 {
+      margin-bottom: .5rem;
+      font-weight: bold;
+
+      &:empty:before {
+        content: attr(data-placeholder);
+        opacity: 0.6;
+      }
+    }
+
+    p,
+    div {
+      &:empty:before {
+        content: attr(data-placeholder);
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .form-title {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+  }

@@ -1,0 +1,9 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <span class="form-title">value accessor directive</span>
+    <div class="review-textarea" formControlName="reviewText" contentEditable>
+
+    </div>
+    <button [disabled]="form.invalid" class="btn-success">Save</button>
+  </form>
+</div>
