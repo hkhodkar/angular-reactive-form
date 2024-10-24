@@ -1,19 +1,41 @@
-  :root {
-    --info: oklch(51.01% 0.274 263.83);
-    --green: green;
-    --error: #fe8080;
-    --white: #FFF;
+  @import './mixin.scss';
 
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
+  :root {
+    --primary: #4A628A;
+    --secondary: #7AB2D3;
+    --accent: #B9E5E8;
+    --light: #DFF2EB;
+    --info: #0171DE;
+    --green: #2E97A7;
+    --light-green: #BED1CF;
+    --error: #C62E2E;
+    --white: #FFF;
+    --gray-700: #373A40;
+    --gray-400: #686D76;
     --gray-100: #eee;
   }
 
-  html {
+  body {
     width: 100vw;
     height: 100vh;
-    background: var(--white);
+    background: var(--light);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--light);
+    transition: all .2s;
+
+
+    &:hover {
+      color: var(--secondary);
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      transition: color .2s;
+    }
   }
 
   label {
@@ -45,13 +67,6 @@
     }
   }
 
-  @mixin input-text {
-    font-size: 12px;
-    box-sizing: border-box;
-    animation-name: input-message-animation;
-    animation-duration: 300ms;
-  }
-
   input.ng-invalid.ng-touched {
     @include input-text();
     border: 1px solid var(--error);
@@ -77,16 +92,17 @@
     animation: input-error-animation 300ms ease-in;
   }
 
-  button {
+  .btn-success {
     background-color: var(--green);
-    padding: .75rem;
-    border: none;
-    width: 100%;
-    border-radius: 4px;
-    color: white;
+    @include btn();
 
     &:disabled {
       background-color: var(--gray-400);
       cursor: not-allowed;
     }
+
+  }
+
+  ul {
+    list-style: none;
   }
