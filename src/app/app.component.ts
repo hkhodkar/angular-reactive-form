@@ -1,7 +1,7 @@
 import { RouterOutlet } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ReactiveFormComponent } from '../features/reactive-form/reactive-form.component';
-import { HeaderComponent } from "../share/header/header.component";
+import { HeaderComponent } from '../features/layouts/header/header.component';
 
 
 
