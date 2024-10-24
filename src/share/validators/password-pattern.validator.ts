@@ -1,19 +1,20 @@
+import { environment } from "../../environments/environment";
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 
 const upperCasePatternError = { upperCasePatternError: true };
 const loweCasePatternError = { lowerCasePatternError: true };
 const symbolPatternError = { symbolPatternError: true };
-const minLengthError = { minimumLength: { minLength: 8 } }
-const maxLengthError = { maximumLength: { maxLength: 30 } }
+const minLengthError = { minimumLength: { minLength: environment.passwordMinLength } }
+const maxLengthError = { maximumLength: { maxLength: environment.passwordMaxLength } }
 
 
 export function passwordPattern(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const { value } = control;
-    const upperCasePattern = new RegExp("(?=.*[A-Z])");
-    const lowerCasePattern = new RegExp("(?=.*[a-z])");
-    const symbolPattern = new RegExp("(?=.*[)!@#$%^&*(])");
+    const upperCasePattern = new RegExp(environment.upperCasePattern);
+    const lowerCasePattern = new RegExp(environment.lowerCasePattern);
+    const symbolPattern = new RegExp(environment.symbolPattern);
     if (!upperCasePattern.test(value)) {
       control.setErrors(upperCasePatternError);
       return upperCasePatternError;

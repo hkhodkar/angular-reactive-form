@@ -40,8 +40,9 @@
     </div>
     <div class="error"
       *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('minimumLength')">
-      Password should have minimum 8 length.
+      Password should have minimum {{passwordControl.getError('minimumLength')?.minLength}} length.
     </div>
+    {{passwordControl.getError('minimumLength')?.minLength}}
     <div class="error"
       *ngIf="(passwordControl.touched || passwordControl.dirty) && passwordControl.hasError('maximumLength')">
       Password should'nt be more than 30 character.
