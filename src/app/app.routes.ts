@@ -8,7 +8,7 @@ export const routes: Routes = [
         .then(m => m.ReactiveFormComponent)
   },
   {
-    path: "CustomRatingComponent",
+    path: "web-component",
     loadComponent: () => import('../features/custom-rating-component/custom-rating-component.component')
       .then(m => m.CustomRatingComponentComponent)
   },
