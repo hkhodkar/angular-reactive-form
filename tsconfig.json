@@ -16,6 +16,11 @@
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
+    "paths": {
+      "rating-picker": [
+        "./dist/rating-picker"
+      ]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",

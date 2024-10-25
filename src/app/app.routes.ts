@@ -5,19 +5,19 @@ export const routes: Routes = [
     path: "ReactiveForm",
     loadComponent: () =>
       import('../features/reactive-form/reactive-form.component')
-        .then(m => m.ReactiveFormComponent)
+        .then(c => c.ReactiveFormComponent)
   },
   {
     path: "web-component",
     loadComponent: () =>
       import('../features/custom-rating-component/custom-rating-component.component')
-        .then(m => m.CustomRatingComponentComponent)
+        .then(c => c.CustomRatingComponentComponent)
   },
   {
     path: "custom-accessor-directive",
     loadComponent: () =>
       import('../features/custom-accessor-directive/custom-accessor-directive.component')
-        .then(m => m.CustomAccessorDirectiveComponent)
+        .then(c => c.CustomAccessorDirectiveComponent)
   },
   {
     path: "**",

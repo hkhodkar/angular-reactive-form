@@ -1,6 +1,7 @@
 <div class="container">
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <span class="form-title">value accessor directive</span>
+    <lib-rating-picker formControlName="reviewRating" />
     <div class="review-textarea" formControlName="reviewText" contentEditable>
 
     </div>
