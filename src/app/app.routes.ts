@@ -20,6 +20,12 @@ export const routes: Routes = [
         .then(c => c.CustomAccessorDirectiveComponent)
   },
   {
+    path: "custom-select",
+    loadComponent: () =>
+      import('../features/custom-select/custom-select.component')
+        .then(c => c.CustomSelectComponent)
+  },
+  {
     path: "**",
     redirectTo: "ReactiveForm"
   }

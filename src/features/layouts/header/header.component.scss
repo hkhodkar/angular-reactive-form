@@ -5,13 +5,24 @@
   align-items: center;
 
   &>ul {
+
+    &>li {
+      padding: .5rem;
+      border: 1px solid var(--green);
+      background: var(--green);
+      border-radius: .5rem;
+      cursor: pointer
+    }
+
     display: flex;
     justify-content: space-around;
     gap: 1rem;
     cursor: pointer;
   }
 
+
+
   .router-link-active {
-    color: var(--secondary);
+    color: var(--primary);
   }
 }

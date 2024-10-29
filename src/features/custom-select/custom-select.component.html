@@ -1,0 +1,8 @@
+<div class="container">
+  <lib-select (selectionChanged)="onSelectionChanged($event)" label="pick a user">
+    <lib-option value="Max">Max</lib-option>
+    <lib-option value="Adam">Adam</lib-option>
+    <lib-option value="Eli">Eli</lib-option>
+    <lib-option [disabled]="true" value="Joel">Joel</lib-option>
+  </lib-select>
+</div>
