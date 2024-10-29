@@ -50,9 +50,7 @@ a {
 
 
   &:hover {
-    color: var(--primary);
-    text-decoration: underline;
-    text-underline-offset: 8px;
+    color: white;
     transition: color .2s;
   }
 }

@@ -6,12 +6,12 @@
 
   &>ul {
 
-    &>li {
+    &>li :not(.router-link-active) {
       padding: .5rem;
       border: 1px solid var(--green);
       background: var(--green);
       border-radius: .5rem;
-      cursor: pointer
+      cursor: pointer;
     }
 
     display: flex;
@@ -20,9 +20,8 @@
     cursor: pointer;
   }
 
-
-
   .router-link-active {
-    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 8px;
   }
 }
